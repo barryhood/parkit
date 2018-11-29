@@ -1,0 +1,144 @@
+.Story {
+  background-color: #eafcf8;
+  position: relative;
+  line-height: 1.2em;
+  box-sizing: border-box;
+  margin: 4px 0 15px;
+  transition: all 0.35s ease-out;
+  font-size: 1rem;
+  border: 1px solid #1AAB8A;
+
+  &:focus-within,
+  &:hover {
+    background-color: white;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    height: 4px;
+    width: 0;
+    position: absolute;
+    background: #1AAB8A;
+    transition: all 0.35s ease-out;
+    z-index: 1;
+  }
+
+  &:before {
+    top: 0px;
+    left: 0;
+  }
+
+  &:after {
+    bottom: 0;
+    right: 0;
+  }
+
+  &:focus-within,
+  &:hover {
+    &:before,
+    &:after {
+      width: 100%;
+    }
+  }
+
+  &__figure {
+    margin: 0;
+    display: block;
+    text-align: center;
+  }
+
+  &__image-link {
+    display: block;
+    position: relative;
+    height: 45vw;
+    max-height: 220px;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+  }
+
+  &__caption {
+    text-align: left;
+    a {
+      color: #0A7C62;
+      text-decoration: none;
+      font-size: 1.3rem;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__details {
+    padding: 10px 15px 0;
+  }
+
+  &__description {
+    font-size: 1.3rem;
+    padding: 10px 0 15px;
+    max-width: 100%;
+    overflow: hidden;
+    text-align: left;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 15px 15px;
+  }
+
+  &__tag {
+    background: #1AAB8A;
+    border: 4px solid #1AAB8A;
+    color: white;
+    font-size: 1em;
+    margin-right: 2px;
+    margin-top: 2px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  @media only screen and (min-width: 500px) {
+    width: calc(50% - 7.5px);
+    margin-right: 14px;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+
+    &__image-link {
+      height: 35vw;
+    }
+  }
+
+  @media only screen and (min-width: 700px) {
+    width: calc(33% - 8px);
+    &:nth-child(2n) {
+      margin-right: 15px;
+    }
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+    &__image-link {
+      height: 25vw;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    width: calc(25% - 12px);
+    margin-right: 15px;
+    &:nth-child(2n) {
+      margin-right: 15px;
+    }
+    &:nth-child(3n) {
+      margin-right: 15px;
+    }
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+}

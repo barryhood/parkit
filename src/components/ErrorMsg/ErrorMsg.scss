@@ -1,0 +1,35 @@
+.ErrorMsg {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  background: #dcdcdc;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  padding: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__title {
+    margin: 0 0 22px;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: .15em;
+  }
+
+  &__text {
+    margin: 0;
+    letter-spacing: .05em;
+    line-height: 1.5em;
+    font-size: 1.4rem;
+  }
+
+  &__error {
+    color: #f00;
+    padding: 3px 6px;
+    margin: 0 5px;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  }
+}

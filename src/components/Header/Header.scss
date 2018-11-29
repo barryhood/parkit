@@ -1,0 +1,68 @@
+.Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25);
+  &__inner {
+    padding: 20px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: 140px;
+    box-sizing: border-box;
+  }
+  &__title {
+    margin: 0;
+    line-height: .9;
+    font-size: 36px;
+    letter-spacing: -2px;
+    padding-bottom: 20px;
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: gray;
+  }
+  &__input {
+    padding: 10px;
+    font-size: 1.6rem;
+    color: gray;
+    outline: 0;
+    border: 2px solid #1AAB8A;
+    background-color: white;
+    margin-left: 10px;
+    width: 150px;
+    transition: all .5s;
+    &:focus,
+    &:active {
+      border-color: #0A7C62;
+      background-color: #eafcf8;
+    }
+  }
+
+  + .Stories {
+    padding-top: 153px;
+  }
+
+  @media only screen and (min-width: 650px) {
+    &__inner {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      height: 84px;
+    }
+    &__title {
+      padding-bottom: 5px;
+    }
+    + .Stories {
+      padding-top: 100px;
+    }
+  }
+}

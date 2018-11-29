@@ -1,0 +1,16 @@
+.NoStories {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  background: #dcdcdc;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  padding: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  p {
+    font-size: 1.4rem;
+  }
+}

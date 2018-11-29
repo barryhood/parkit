@@ -1,28 +1,77 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import Stories from './components/Stories';
+import Loader from './components/Loader';
+import ErrorMsg from './components/ErrorMsg';
+import { FEED_URL } from './config/constants.js';
+import './App.scss';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true,
+      initialStories: [],
+      stories: []
+    };
+    this.loadData();
+  }
+
+  loadData() {
+    if(!window.jsonFlickrFeed) {
+      window.jsonFlickrFeed = (data) => this.parseData(data);
+      const script = document.createElement('script');
+      script.src = FEED_URL;
+      script.async = true;
+      script.onerror = () => this.setState({ error: 'Script failed to load', loading: false });;
+      document.body.appendChild(script);
+    }
+  }
+
+  parseData(data) {
+    const initialStories = data.items.map((story) =>  story);
+    this.setState({
+      initialStories,
+      stories: initialStories,
+      loading: false
+    });
+  }
+
+  filterTags = (event) => {
+    let updatedStories = this.state.initialStories;
+    updatedStories = updatedStories.filter((story) => {
+      return story.tags.includes(event.target.value.toLowerCase());
+    });
+    this.setState({
+      stories: updatedStories
+    });
+  }
+
+  renderStories() {
+    if(this.state.initialStories.length) {
+      return (
+        <React.Fragment>
+          <Header onChange={this.filterTags} />
+          <Stories stories={this.state.stories} />
+        </React.Fragment>
+      );
+    }
+  }
+
+  renderErrorMsg() {
+    if(this.state.error) return (<ErrorMsg errorMsg={this.state.error} />);
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.state.loading && <Loader />}
+        {this.renderStories()}
+        {this.renderErrorMsg()}
       </div>
     );
   }
+
 }
 
 export default App;

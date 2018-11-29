@@ -1,0 +1,11 @@
+.Stories {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 15px;
+
+  @media only screen and (min-width: 500px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
