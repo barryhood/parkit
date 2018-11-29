@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       loading: true,
       initialStories: [],
-      stories: []
+      stories: [],
+      searchTerm: ''
     };
     this.loadData();
   }
@@ -38,11 +39,13 @@ class App extends Component {
   }
 
   filterTags = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
     let updatedStories = this.state.initialStories;
     updatedStories = updatedStories.filter((story) => {
-      return story.tags.includes(event.target.value.toLowerCase());
+      return story.tags.includes(searchTerm);
     });
     this.setState({
+      searchTerm,
       stories: updatedStories
     });
   }
@@ -52,7 +55,7 @@ class App extends Component {
       return (
         <React.Fragment>
           <Header onChange={this.filterTags} />
-          <Stories stories={this.state.stories} />
+          <Stories stories={this.state.stories} searchTerm={this.state.searchTerm} />
         </React.Fragment>
       );
     }

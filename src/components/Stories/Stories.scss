@@ -3,6 +3,8 @@
   flex-direction: column;
   background: white;
   padding: 15px;
+  max-width: 2000px;
+  margin: 0 auto;
 
   @media only screen and (min-width: 500px) {
     flex-direction: row;

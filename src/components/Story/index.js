@@ -5,7 +5,7 @@ import './Story.scss';
 class Story extends Component {
 
   createLink(link, title) {
-    return (<a href={link} target="_blank" rel="noopener noreferrer">{title}</a>);
+    return (<a href={link} target="_blank" rel="noopener noreferrer"><span>{title}</span></a>);
   }
 
   generateAuthorDetails(author) {
@@ -32,6 +32,7 @@ class Story extends Component {
     const { authorMailTo, authorName} = this.generateAuthorDetails(author);
     const descriptionParagraph = this.splitDescriptionIntoParagraphs(description);
     const tagsList = this.generateTags(tags);
+    const searchTerm = this.props.searchTerm;
 
     return (
       <article className="Story">
@@ -54,15 +55,15 @@ class Story extends Component {
             </div>
           </div>
         </figure>
-        <div className="Story__tags">
-          {tagsList.map(function(tag){
-            return <span className="Story__tag" key={tag}>{tag}</span>
+        <ul className="Story__tags">
+          {tagsList.map((tag) => {
+            const tagClassName = searchTerm && !tag.includes(searchTerm) ? 'Story__tag Story__tag--no-match' : 'Story__tag';
+            return <li className={tagClassName} key={tag}>{tag}</li>
           })}
-        </div>
+        </ul>
       </article>
     )
   }
-
 }
 
 export default Story;
