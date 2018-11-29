@@ -9,9 +9,7 @@ const createStories = (num) => {
     storyObject.push({
       title: `Story title ${i}`,
       link: `https://story/url/${i}`,
-      media: {
-        m: `https://story/url/${i}`
-      },
+      media: { m: `https://story/url/${i}` },
       description: `<p></p><p></p><p>Description ${i}</p>`,
       author: "nobody@flickr.com (\"author\")",
       tags: `tag${i}`
